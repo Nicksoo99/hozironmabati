@@ -1,16 +1,21 @@
+import { useState } from 'react';
 import { Phone, Mail, MapPin, Instagram, Facebook, Award, Shield, Truck, Users, CheckCircle, Factory } from 'lucide-react';
 import { motion } from 'motion/react';
-import logo from '../imports/WhatsApp_Image_2026-04-26_at_19.15.00.jpeg';
-import stoneCoatedTile from '../imports/WhatsApp_Image_2026-04-28_at_14.17.49.jpeg';
-import roofingAccessories from '../imports/WhatsApp_Image_2026-04-28_at_14.23.01.jpeg';
-import roofingScrews from '../imports/WhatsApp_Image_2026-04-28_at_14.20.23_(1).jpeg';
-import tileProfileSheet from '../imports/572738061_720085777770183_995392330592646578_n.jpg';
-import customerTestimonial from '../imports/626775389_797195566725870_4826691778013097524_n.jpg';
-import decraTiles from '../imports/641697758_813456061766487_4970874504655035091_n.jpg';
-import boxProfileSheets from '../imports/images.jpg';
+import logo from '../imports/logo.jpeg';
+import boxProfileSheets from '../imports/Box_profile.jpeg';
+import decraTiles from '../imports/stone_coated.jpeg';
+import roofingAccessories from '../imports/accessories.jpeg';
+import tileProfileSheet from '../imports/eurotile.jpeg';
+import customerTestimonial from '../imports/Happy_client.jpeg';
+import paymentDetails from '../imports/payment_details.jpeg';
 import { ProductDropdown } from './components/ProductDropdown';
 
 export default function App() {
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const handleDropdownToggle = (id: string) => {
+    setOpenDropdown(openDropdown === id ? null : id);
+  };
   return (
     <div className="min-h-screen bg-green-50">
       {/* Header */}
@@ -183,14 +188,18 @@ export default function App() {
                 </p>
                 <div className="space-y-3">
                   <ProductDropdown
+                    id="corrugated-gauge"
                     title="Gauge Options"
                     options={[
                       '28 Gauge (0.35mm) - Standard',
                       '30 Gauge (0.30mm) - Light Duty',
                       '32 Gauge (0.25mm) - Economy'
                     ]}
+                    isOpen={openDropdown === 'corrugated-gauge'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="corrugated-colors"
                     title="Colors Available"
                     options={[
                       'Blue - Sky Blue',
@@ -202,8 +211,11 @@ export default function App() {
                       'Ivory White',
                       'Silver Grey (Galvanized)'
                     ]}
+                    isOpen={openDropdown === 'corrugated-colors'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="corrugated-lengths"
                     title="Sheet Lengths"
                     options={[
                       '1.8m (6 feet)',
@@ -212,6 +224,8 @@ export default function App() {
                       '3.6m (12 feet)',
                       'Custom Lengths Available'
                     ]}
+                    isOpen={openDropdown === 'corrugated-lengths'}
+                    onToggle={handleDropdownToggle}
                   />
                 </div>
               </div>
@@ -240,14 +254,18 @@ export default function App() {
                 </p>
                 <div className="space-y-3">
                   <ProductDropdown
+                    id="box-gauge"
                     title="Gauge Options"
                     options={[
                       '28 Gauge (0.35mm) - Standard',
                       '30 Gauge (0.30mm) - Light Duty',
                       '32 Gauge (0.25mm) - Economy'
                     ]}
+                    isOpen={openDropdown === 'box-gauge'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="box-colors"
                     title="Colors Available"
                     options={[
                       'Blue - Ocean Blue',
@@ -260,8 +278,11 @@ export default function App() {
                       'Ivory White',
                       'Silver Grey (Galvanized)'
                     ]}
+                    isOpen={openDropdown === 'box-colors'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="box-lengths"
                     title="Sheet Lengths"
                     options={[
                       '1.8m (6 feet)',
@@ -270,6 +291,8 @@ export default function App() {
                       '3.6m (12 feet)',
                       'Custom Lengths Available'
                     ]}
+                    isOpen={openDropdown === 'box-lengths'}
+                    onToggle={handleDropdownToggle}
                   />
                 </div>
               </div>
@@ -298,6 +321,7 @@ export default function App() {
                 </p>
                 <div className="space-y-3">
                   <ProductDropdown
+                    id="tile-versatile"
                     title="Versatile Tile Profile"
                     options={[
                       'Versatile - Charcoal Grey',
@@ -306,8 +330,11 @@ export default function App() {
                       'Versatile - Coffee Brown',
                       'Versatile - Terracotta Red'
                     ]}
+                    isOpen={openDropdown === 'tile-versatile'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="tile-roman"
                     title="Roman Tile Profile"
                     options={[
                       'Roman Tile - Maroon',
@@ -316,8 +343,11 @@ export default function App() {
                       'Roman Tile - Terracotta',
                       'Roman Tile - Forest Green'
                     ]}
+                    isOpen={openDropdown === 'tile-roman'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="tile-european"
                     title="European Tile Profile"
                     options={[
                       'Eurotile - Coffee Brown',
@@ -326,8 +356,11 @@ export default function App() {
                       'Eurotile - Terracotta Red',
                       'Eurotile - Olive Green'
                     ]}
+                    isOpen={openDropdown === 'tile-european'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="tile-specs"
                     title="Specifications"
                     options={[
                       'Standard Gauge: 0.35mm (28 Gauge)',
@@ -335,6 +368,8 @@ export default function App() {
                       'Standard Lengths: 2.4m, 3.0m, 3.6m',
                       'Custom lengths available on request'
                     ]}
+                    isOpen={openDropdown === 'tile-specs'}
+                    onToggle={handleDropdownToggle}
                   />
                 </div>
               </div>
@@ -363,6 +398,7 @@ export default function App() {
                 </p>
                 <div className="space-y-3">
                   <ProductDropdown
+                    id="stone-classic"
                     title="Classic Profile - Gauge 26"
                     options={[
                       'Classic Tile - Blue (Ocean Blue)',
@@ -372,8 +408,11 @@ export default function App() {
                       'Classic Tile - Forest Green',
                       'Classic Tile - Maroon'
                     ]}
+                    isOpen={openDropdown === 'stone-classic'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="stone-shingles"
                     title="Shingles Profile - Gauge 26"
                     options={[
                       'Shingle - Maroon with Patches',
@@ -382,8 +421,11 @@ export default function App() {
                       'Shingle - Forest Green',
                       'Shingle - Terracotta Red'
                     ]}
+                    isOpen={openDropdown === 'stone-shingles'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="stone-milano"
                     title="Milano Profile - Gauge 26"
                     options={[
                       'Milano - Blue',
@@ -392,8 +434,11 @@ export default function App() {
                       'Milano - Charcoal Black',
                       'Milano - Olive Green'
                     ]}
+                    isOpen={openDropdown === 'stone-milano'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="stone-shake"
                     title="Shake Profile - Gauge 26"
                     options={[
                       'Shake - Blue',
@@ -402,8 +447,11 @@ export default function App() {
                       'Shake - Charcoal Black',
                       'Shake - Forest Green'
                     ]}
+                    isOpen={openDropdown === 'stone-shake'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="stone-pricing"
                     title="Pricing & Specifications"
                     options={[
                       'KSH 610 per piece (Standard retail)',
@@ -412,6 +460,8 @@ export default function App() {
                       'Stone coating warranty: 10 years',
                       'Bulk pricing available on request'
                     ]}
+                    isOpen={openDropdown === 'stone-pricing'}
+                    onToggle={handleDropdownToggle}
                   />
                 </div>
               </div>
@@ -440,6 +490,7 @@ export default function App() {
                 </p>
                 <div className="space-y-3">
                   <ProductDropdown
+                    id="accessories-ridge"
                     title="Ridge Caps & Tops"
                     options={[
                       'Standard Ridge Caps - Box Profile',
@@ -449,8 +500,11 @@ export default function App() {
                       'Hip Ridge Caps',
                       'Barge Ridge Caps'
                     ]}
+                    isOpen={openDropdown === 'accessories-ridge'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="accessories-valley"
                     title="Valley & Flashing"
                     options={[
                       'Valley Caps - Standard',
@@ -459,8 +513,11 @@ export default function App() {
                       'Verge Trim',
                       'Flashing Sheets'
                     ]}
+                    isOpen={openDropdown === 'accessories-valley'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="accessories-fasteners"
                     title="Fasteners & Fixings"
                     options={[
                       'Self-Tapping Screws with Rubber Washers - Blue',
@@ -474,6 +531,8 @@ export default function App() {
                       'Color-Matched Screw Sets (Per kg)',
                       'Complete Fixings Kit (Assorted sizes)'
                     ]}
+                    isOpen={openDropdown === 'accessories-fasteners'}
+                    onToggle={handleDropdownToggle}
                   />
                 </div>
               </div>
@@ -502,6 +561,7 @@ export default function App() {
                 </p>
                 <div className="space-y-3">
                   <ProductDropdown
+                    id="gutters-profiles"
                     title="Gutter Profiles & Colors"
                     options={[
                       'Square Line Gutters - White',
@@ -511,16 +571,22 @@ export default function App() {
                       'Ogee Gutters - White',
                       'Ogee Gutters - Brown'
                     ]}
+                    isOpen={openDropdown === 'gutters-profiles'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="gutters-sizes"
                     title="Gutter Sizes"
                     options={[
                       '4" (100mm) - Standard Residential',
                       '5" (125mm) - Large Residential',
                       '6" (150mm) - Commercial Grade'
                     ]}
+                    isOpen={openDropdown === 'gutters-sizes'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="gutters-downpipes"
                     title="Downpipes & Connectors"
                     options={[
                       'Round Downpipes - 68mm (White/Brown)',
@@ -530,8 +596,11 @@ export default function App() {
                       'Pipe Offset Bends',
                       'Downpipe Shoes'
                     ]}
+                    isOpen={openDropdown === 'gutters-downpipes'}
+                    onToggle={handleDropdownToggle}
                   />
                   <ProductDropdown
+                    id="gutters-fittings"
                     title="Gutter Fittings"
                     options={[
                       'Gutter End Caps - Left & Right',
@@ -542,6 +611,8 @@ export default function App() {
                       'Gutter Support Brackets',
                       'Fascia Brackets'
                     ]}
+                    isOpen={openDropdown === 'gutters-fittings'}
+                    onToggle={handleDropdownToggle}
                   />
                 </div>
               </div>
@@ -654,88 +725,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-12 md:py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Why Choose Horizon Mabati Factory?</h2>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-4 md:mb-6"></div>
-            <p className="text-base md:text-lg text-zinc-700 max-w-3xl mx-auto leading-relaxed">
-              With countless roofing suppliers in Kenya, what makes Horizon Mabati Factory stand out? Here are the key reasons
-              why thousands of builders, contractors, and homeowners trust us with their roofing needs.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 md:mb-16">
-            {[
-              {
-                icon: Award,
-                title: "Uncompromising Quality",
-                desc: "Every sheet we manufacture undergoes strict ISO-certified quality control processes. We source only premium-grade raw materials and employ advanced manufacturing techniques to ensure our products meet and exceed international standards.",
-                color: "from-yellow-500 to-green-600"
-              },
-              {
-                icon: Truck,
-                title: "Nationwide Fast Delivery",
-                desc: "We understand that time is money in construction. Our efficient logistics network ensures prompt delivery to all 47 counties across Kenya. Whether you're in Nairobi, Mombasa, Kisumu, or any rural area, we guarantee timely delivery.",
-                color: "from-yellow-500 to-green-600"
-              },
-              {
-                icon: Users,
-                title: "Expert Technical Support",
-                desc: "Our team of experienced roofing specialists is always ready to help. From product selection to installation guidance, we provide comprehensive technical support. We help you calculate the exact quantities you need and recommend the best products.",
-                color: "from-yellow-500 to-green-600"
-              },
-              {
-                icon: Shield,
-                title: "Best Value Pricing",
-                desc: "Quality doesn't have to break the bank. By manufacturing directly and eliminating middlemen, we offer factory-direct prices that give you the best value for your investment. Plus, our products' superior durability means lower long-term costs.",
-                color: "from-yellow-500 to-green-600"
-              }
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-green-50 p-6 md:p-8 rounded-xl text-center hover:shadow-2xl transition-all border-2 border-green-200 hover:border-yellow-500"
-              >
-                <div className={`w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br ${item.color} rounded-full mx-auto mb-4 md:mb-6 flex items-center justify-center shadow-lg`}>
-                  <item.icon className="text-white" size={28} />
-                </div>
-                <h3 className="font-bold text-lg md:text-xl text-green-800 mb-3 md:mb-4">{item.title}</h3>
-                <p className="text-sm md:text-base text-zinc-700 leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="bg-gradient-to-r from-green-700 to-yellow-600 rounded-2xl p-8 md:p-12 text-white">
-            <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-center">Our Commitment to Excellence</h3>
-              <p className="text-base md:text-lg text-green-50 mb-6 md:mb-8 leading-relaxed text-center">
-                At Horizon Mabati Factory, excellence is not just a goal—it's our standard. We believe that every Kenyan
-                deserves access to world-class roofing materials that protect their investments and stand the test of time.
-              </p>
-              <div className="grid grid-cols-3 gap-4 md:gap-8">
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-yellow-300 mb-2">100%</div>
-                  <div className="text-sm md:text-base text-green-100">Quality Guaranteed</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-yellow-300 mb-2">24/7</div>
-                  <div className="text-sm md:text-base text-green-100">Customer Support</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-yellow-300 mb-2">10+</div>
-                  <div className="text-sm md:text-base text-green-100">Years Experience</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {/* Why Choose Us - rest of the app - Contact - Footer */}
       {/* Contact Section */}
       <section id="contact" className="py-12 md:py-20 bg-green-50">
         <div className="container mx-auto px-4">
@@ -744,140 +734,19 @@ export default function App() {
               <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Get In Touch With Us</h2>
               <div className="w-24 h-1 bg-yellow-500 mx-auto mb-4 md:mb-6"></div>
               <p className="text-base md:text-lg text-zinc-700 leading-relaxed">
-                Ready to start your roofing project? Our friendly and knowledgeable team is here to assist you every step of the way.
-                Whether you need a product recommendation, pricing information, or technical advice, we're just a message or call away.
+                Ready to start your roofing project? Contact us via WhatsApp at 0797407195 for quotes and inquiries!
               </p>
             </div>
-
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-              <div>
-                <h3 className="text-xl md:text-2xl font-bold text-green-800 mb-4">Contact Information</h3>
-                <p className="text-sm md:text-base text-zinc-700 mb-6 leading-relaxed">
-                  Reach out to us through any of these channels. Our customer service team is available to answer your questions,
-                  provide quotes, and schedule deliveries.
-                </p>
-                <div className="space-y-4">
-                  <a
-                    href="https://wa.me/254797407195"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 md:gap-4 p-4 md:p-5 bg-green-50 rounded-xl hover:bg-green-100 transition-all group border-2 border-green-200 hover:border-green-400 shadow-md hover:shadow-lg touch-manipulation"
-                  >
-                    <div className="w-12 h-12 md:w-14 md:h-14 bg-green-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg flex-shrink-0">
-                      <Phone className="text-white" size={22} />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-green-800 text-base md:text-lg">WhatsApp / Call Us</p>
-                      <p className="text-yellow-600 font-medium text-sm md:text-base">0797 407 195</p>
-                      <p className="text-zinc-600 text-xs md:text-sm">Available 7 days a week</p>
-                    </div>
-                  </a>
-
-                  <div className="flex items-center gap-3 md:gap-4 p-4 md:p-5 bg-white rounded-xl border-2 border-green-200 shadow-md">
-                    <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-yellow-500 to-green-600 rounded-full flex items-center justify-center shadow-lg flex-shrink-0">
-                      <Mail className="text-white" size={22} />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-green-800 text-base md:text-lg">Email Us</p>
-                      <p className="text-yellow-600 font-medium text-sm md:text-base">info@horizonmabati.co.ke</p>
-                      <p className="text-zinc-600 text-xs md:text-sm">We respond within 24 hours</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 md:gap-4 p-4 md:p-5 bg-white rounded-xl border-2 border-green-200 shadow-md">
-                    <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-yellow-500 to-green-600 rounded-full flex items-center justify-center shadow-lg flex-shrink-0">
-                      <MapPin className="text-white" size={22} />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-green-800 text-base md:text-lg">Visit Our Factory</p>
-                      <p className="text-yellow-600 font-medium text-sm md:text-base">Nairobi, Kenya</p>
-                      <p className="text-zinc-600 text-xs md:text-sm">Factory tours available by appointment</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-6 md:mt-8 p-5 md:p-6 bg-gradient-to-r from-green-700 to-yellow-600 rounded-xl text-white">
-                  <h4 className="font-bold text-base md:text-lg mb-3">Business Hours</h4>
-                  <div className="space-y-2 text-sm md:text-base text-green-50">
-                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
-                    <p>Saturday: 9:00 AM - 5:00 PM</p>
-                    <p>Sunday: 10:00 AM - 3:00 PM</p>
-                    <p className="text-xs md:text-sm text-yellow-300 mt-3">* Emergency orders and inquiries handled 24/7 via WhatsApp</p>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl md:text-2xl font-bold text-green-800 mb-4">Follow Us on Social Media</h3>
-                <p className="text-sm md:text-base text-zinc-700 mb-6 leading-relaxed">
-                  Stay connected with Horizon Mabati Factory on social media for the latest product updates, special promotions,
-                  installation tips, customer testimonials, and industry news.
-                </p>
-
-                <div className="space-y-4">
-                  <a
-                    href="https://www.instagram.com/ltdhorizonmabatifactory?igsh=aHVzbzZjaG04MTFh"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 md:gap-4 p-4 md:p-5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl hover:from-purple-600 hover:to-pink-600 transition-all text-white group shadow-lg hover:shadow-xl touch-manipulation"
-                  >
-                    <Instagram size={28} className="group-hover:scale-110 transition-transform flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-base md:text-lg">Follow us on Instagram</p>
-                      <p className="text-xs md:text-sm opacity-90">@ltdhorizonmabatifactory</p>
-                      <p className="text-xs opacity-75 mt-1">See our latest projects & products</p>
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://www.facebook.com/HorizonMabatiFactoryLTD"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 md:gap-4 p-4 md:p-5 bg-blue-600 rounded-xl hover:bg-blue-700 transition-all text-white group shadow-lg hover:shadow-xl touch-manipulation"
-                  >
-                    <Facebook size={28} className="group-hover:scale-110 transition-transform flex-shrink-0" />
-                    <div>
-                      <p className="font-semibold text-base md:text-lg">Like our Facebook Page</p>
-                      <p className="text-xs md:text-sm opacity-90">Horizon Mabati Factory LTD</p>
-                      <p className="text-xs opacity-75 mt-1">Customer reviews & success stories</p>
-                    </div>
-                  </a>
-
-                  <a
-                    href="https://www.tiktok.com/@horizon.mabati?_r=1&_t=ZS-95rgqZzP1pE"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 md:gap-4 p-4 md:p-5 bg-zinc-900 rounded-xl hover:bg-zinc-800 transition-all text-white group shadow-lg hover:shadow-xl touch-manipulation"
-                  >
-                    <div className="w-7 h-7 group-hover:scale-110 transition-transform flex-shrink-0">
-                      <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-base md:text-lg">Watch on TikTok</p>
-                      <p className="text-xs md:text-sm opacity-90">@horizon.mabati</p>
-                      <p className="text-xs opacity-75 mt-1">Behind-the-scenes & installation guides</p>
-                    </div>
-                  </a>
-                </div>
-
-                <div className="mt-6 md:mt-8 p-5 md:p-6 bg-white rounded-xl border-2 border-green-200">
-                  <h4 className="font-bold text-green-800 text-base md:text-lg mb-3">Request a Free Quote</h4>
-                  <p className="text-sm md:text-base text-zinc-700 mb-4 leading-relaxed">
-                    Get an instant quote for your roofing project. Contact us via WhatsApp with your project details including
-                    roof dimensions, preferred product type, and location. We'll provide a detailed quote within hours!
-                  </p>
-                  <a
-                    href="https://wa.me/254797407195?text=Hello%20Horizon%20Mabati,%20I%20would%20like%20to%20request%20a%20quote%20for%20my%20roofing%20project"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-center bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg text-sm md:text-base touch-manipulation"
-                  >
-                    Request Quote via WhatsApp
-                  </a>
-                </div>
-              </div>
+            <div className="text-center">
+              <a
+                href="https://wa.me/254797407195"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl text-lg touch-manipulation"
+              >
+                <Phone size={24} />
+                Contact Us on WhatsApp
+              </a>
             </div>
           </div>
         </div>
@@ -886,70 +755,33 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-gradient-to-br from-green-800 to-yellow-700 text-white py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-12">
-            <div className="sm:col-span-2">
-              <h3 className="text-2xl md:text-3xl font-bold mb-3">HORIZON</h3>
-              <p className="text-xs md:text-sm text-green-100 mb-4">Mabati Factory LTD</p>
-              <p className="text-sm md:text-base text-green-100 leading-relaxed mb-4 md:mb-6">
-                Kenya's trusted manufacturer of premium roofing materials. We combine quality craftsmanship with competitive
-                pricing to deliver roofing solutions that protect your investments for decades to come.
-              </p>
-              <div className="flex gap-3 md:gap-4">
-                <a
-                  href="https://www.instagram.com/ltdhorizonmabatifactory?igsh=aHVzbzZjaG04MTFh"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 md:w-12 md:h-12 bg-yellow-600 hover:bg-yellow-500 rounded-full flex items-center justify-center transition-all hover:scale-110 touch-manipulation"
-                >
+          <div className="grid md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
+            <div className="order-2 md:order-1">
+              <div className="bg-white rounded-lg p-3 shadow-xl inline-block">
+                <h4 className="text-green-800 font-bold text-sm mb-2">Payment Details</h4>
+                <img
+                  src={paymentDetails}
+                  alt="Payment Details"
+                  className="w-48 md:w-56 h-auto rounded"
+                />
+              </div>
+            </div>
+            <div className="order-1 md:order-2 text-center md:text-right">
+              <h3 className="text-2xl md:text-3xl font-bold mb-2">HORIZON Mabati Factory LTD</h3>
+              <p className="text-green-100 mb-4">Building Excellence, Roofing Dreams</p>
+              <div className="flex justify-center md:justify-end gap-3 mb-4">
+                <a href="https://www.instagram.com/ltdhorizonmabatifactory?igsh=aHVzbzZjaG04MTFh" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-yellow-600 hover:bg-yellow-500 rounded-full flex items-center justify-center transition-all hover:scale-110 touch-manipulation">
                   <Instagram size={20} />
                 </a>
-                <a
-                  href="https://www.facebook.com/HorizonMabatiFactoryLTD"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 md:w-12 md:h-12 bg-yellow-600 hover:bg-yellow-500 rounded-full flex items-center justify-center transition-all hover:scale-110 touch-manipulation"
-                >
+                <a href="https://www.facebook.com/HorizonMabatiFactoryLTD" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-yellow-600 hover:bg-yellow-500 rounded-full flex items-center justify-center transition-all hover:scale-110 touch-manipulation">
                   <Facebook size={20} />
                 </a>
-                <a
-                  href="https://wa.me/254797407195"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 md:w-12 md:h-12 bg-yellow-600 hover:bg-yellow-500 rounded-full flex items-center justify-center transition-all hover:scale-110 touch-manipulation"
-                >
+                <a href="https://wa.me/254797407195" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-yellow-600 hover:bg-yellow-500 rounded-full flex items-center justify-center transition-all hover:scale-110 touch-manipulation">
                   <Phone size={20} />
                 </a>
               </div>
+              <p className="text-green-100 text-xs">© 2026 Horizon Mabati Factory LTD. All rights reserved.</p>
             </div>
-
-            <div>
-              <h4 className="font-bold text-base md:text-lg mb-4 text-yellow-300">Quick Links</h4>
-              <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-green-100">
-                <li><a href="#products" className="hover:text-white transition-colors touch-manipulation">Our Products</a></li>
-                <li><a href="#contact" className="hover:text-white transition-colors touch-manipulation">Contact Us</a></li>
-                <li><a href="https://wa.me/254797407195" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors touch-manipulation">Request Quote</a></li>
-                <li><a href="#" className="hover:text-white transition-colors touch-manipulation">About Us</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-base md:text-lg mb-4 text-yellow-300">Our Products</h4>
-              <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-green-100">
-                <li>Corrugated Sheets</li>
-                <li>Box Profile Sheets</li>
-                <li>Tile Profile Sheets</li>
-                <li>Stone Coated Tiles</li>
-                <li>Roofing Accessories</li>
-                <li>Gutters & Accessories</li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-yellow-600 pt-6 md:pt-8 text-center">
-            <p className="text-yellow-300 font-semibold mb-2 text-sm md:text-base">Building Excellence, Roofing Dreams</p>
-            <p className="text-green-100 text-xs md:text-sm">
-              © 2026 Horizon Mabati Factory LTD. All rights reserved. Proudly serving Kenya.
-            </p>
           </div>
         </div>
       </footer>

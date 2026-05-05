@@ -1,43 +1,18 @@
 import { ChevronDown } from 'lucide-react';
-import { useState, useRef, useEffect } from 'react';
 
 interface ProductDropdownProps {
+  id: string;
   title: string;
   options: string[];
+  isOpen: boolean;
+  onToggle: (id: string) => void;
 }
 
-export function ProductDropdown({ title, options }: ProductDropdownProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: Event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('touchstart', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
-    };
-  }, [isOpen]);
-
+export function ProductDropdown({ id, title, options, isOpen, onToggle }: ProductDropdownProps) {
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative">
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            setIsOpen(!isOpen);
-          }
-        }}
+        onClick={() => onToggle(id)}
         className="w-full bg-white border-2 border-green-300 hover:border-yellow-500 rounded-lg px-4 py-3 flex justify-between items-center transition-all touch-manipulation"
         aria-expanded={isOpen}
         aria-label={`${isOpen ? 'Close' : 'Open'} ${title} options`}
@@ -53,14 +28,7 @@ export function ProductDropdown({ title, options }: ProductDropdownProps) {
           {options.map((option, index) => (
             <div
               key={index}
-              onClick={() => setIsOpen(false)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  setIsOpen(false);
-                }
-              }}
-              tabIndex={0}
-              className="px-4 py-3 hover:bg-green-50 cursor-pointer transition-colors border-b border-green-100 last:border-b-0 text-sm md:text-base focus:bg-green-50 focus:outline-none"
+              className="px-4 py-3 hover:bg-green-50 cursor-pointer transition-colors border-b border-green-100 last:border-b-0 text-sm md:text-base"
             >
               <span className="text-zinc-700">{option}</span>
             </div>
